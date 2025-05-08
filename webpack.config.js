@@ -1,3 +1,4 @@
+const path = require('path');
 const modoDev = process.env.NODE_ENV != 'production'
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -10,6 +11,13 @@ module.exports = {
     output: {
         filename: 'principal.js',
         path: __dirname + '/public'
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'public')
+        },
+        port: 9000,
+        hot: true
     },
     optimization: {
         minimizer: [
